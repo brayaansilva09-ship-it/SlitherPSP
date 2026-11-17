@@ -1,18 +1,18 @@
 name: Build PSP ISO
 on: [push]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image: pspdev/pspdev:latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Compilar ISO
-        run: |
-          apt-get update && apt-get install -y genisoimage
-          make iso
-      - name: Disponibilizar ISO para Download
-        uses: actions/upload-artifact@v4
-        with:
-          name: SlitherPSP-ISO
-          path: SlitherPSP.iso
+build:
+runs-on: ubuntu-latest
+container:
+image: pspdev/pspdev:latest
+steps:
+- uses: actions/checkout@v4
+- name: Instalar genisoimage e Compilar ISO
+run: |
+apk update && apk add genisoimage || pacman -S --noconfirm genisoimage || true
+make iso
+- name: Disponibilizar ISO para Download
+uses: actions/upload-artifact@v4
+with:
+name: SlitherPSP-ISO
+path: SlitherPSP.iso
