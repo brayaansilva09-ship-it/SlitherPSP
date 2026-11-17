@@ -1,2 +1,2 @@
 # SlitherPSP
-Estou tentando fazer do jogos "slither.io" para psp
+Estou tentando fazer o jogo "slither.io" para psp
